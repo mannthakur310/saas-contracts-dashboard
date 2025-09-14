@@ -26,7 +26,7 @@ React + Tailwind SPA for a simulated contracts dashboard.
 
 
 ## Deployment
-- Deploy to Vercel or Netlify by connecting the GitHub repo. Build command: `npm run build`. Publish `dist`.
+- Deploy to Vercel by connecting the GitHub repo. Build command: `npm run build`. Publish `dist`.
 
 
 ## Assumptions

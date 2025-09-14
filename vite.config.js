@@ -13,4 +13,10 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
   },
+  server: {
+    port: 5173,
+    strictPort: false,
+  },
+  publicDir: 'public',
+  assetsInclude: ['**/*.json'],
 })

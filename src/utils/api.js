@@ -1,9 +1,20 @@
 // lightweight API helpers that fetch from public/contracts.json
 export async function fetchContracts() {
-    const res = await fetch('/contracts.json')
-    if (!res.ok) throw new Error('Failed to load contracts')
-    return res.json()
+    try {
+        const res = await fetch('/contracts.json')
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`)
+        }
+        const contentType = res.headers.get('content-type')
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Response is not JSON')
+        }
+        return res.json()
+    } catch (error) {
+        console.error('Error fetching contracts:', error)
+        throw new Error('Failed to load contracts: ' + error.message)
     }
+}
     
     
     export async function fetchContractById(id) {

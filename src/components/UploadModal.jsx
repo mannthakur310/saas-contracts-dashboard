@@ -20,11 +20,11 @@ setFiles(prev => prev.map(p=> p.id === it.id ? {...p, status: Math.random() > 0.
 if (!open) return null
 return (
 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-  <div className="card w-full max-w-2xl transform transition-all duration-300 scale-100">
+  <div className="card w-full max-w-2xl transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
     <div className="card-header">
       <div className="flex justify-between items-center">
         <div>
-          <h3 className="text-xl font-bold text-gray-900">Upload Contracts</h3>
+          <h3 className="text-lg md:text-xl font-bold text-gray-900">Upload Contracts</h3>
           <p className="text-gray-600 text-sm mt-1">Upload your contract documents for analysis</p>
         </div>
         <button 
@@ -39,16 +39,16 @@ return (
     </div>
     
     <div className="card-body">
-      <label className="block border-2 border-dashed border-gray-300 hover:border-blue-400 p-8 text-center rounded-xl cursor-pointer transition-colors duration-300 bg-gray-50 hover:bg-blue-50/30">
+      <label className="block border-2 border-dashed border-gray-300 hover:border-blue-400 p-6 md:p-8 text-center rounded-xl cursor-pointer transition-colors duration-300 bg-gray-50 hover:bg-blue-50/30">
         <input type="file" multiple className="hidden" onChange={onSelect} />
         <div className="space-y-3">
-          <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mx-auto w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+            <svg className="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
           <div>
-            <p className="text-lg font-medium text-gray-900">Drop files here or click to browse</p>
+            <p className="text-base md:text-lg font-medium text-gray-900">Drop files here or click to browse</p>
             <p className="text-gray-600 text-sm">Support for PDF, DOC, DOCX files</p>
           </div>
         </div>

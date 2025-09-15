@@ -79,11 +79,11 @@ return (
             </div> */}
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <select 
             value={statusFilter} 
             onChange={e=>{setStatusFilter(e.target.value); setPage(1)}} 
-            className="form-input w-40"
+            className="form-input w-full sm:w-40"
           >
             <option value="">All Status</option>
             <option>Active</option>
@@ -93,7 +93,7 @@ return (
           <select 
             value={riskFilter} 
             onChange={e=>{setRiskFilter(e.target.value); setPage(1)}} 
-            className="form-input w-32"
+            className="form-input w-full sm:w-32"
           >
             <option value="">All Risk</option>
             <option>Low</option>
@@ -106,7 +106,7 @@ return (
   </div>
 
   {/* Results Summary */}
-  <div className="flex items-center justify-between">
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
     <div className="text-sm text-gray-600">
       Showing {pageData.length} of {filtered.length} contracts
     </div>
@@ -116,36 +116,37 @@ return (
   </div>
 
   {/* Table */}
-  <div className="table-container">
+  <div className="table-container overflow-x-auto">
     <table className="min-w-full">
       <thead className="table-header">
         <tr>
-          <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Contract</th>
-          <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Parties</th>
-          <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Expiry</th>
-          <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
-          <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Risk</th>
+          <th className="px-3 md:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Contract</th>
+          <th className="px-3 md:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Parties</th>
+          <th className="px-3 md:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Expiry</th>
+          <th className="px-3 md:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+          <th className="px-3 md:px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">Risk</th>
         </tr>
       </thead>
       <tbody className="divide-y divide-gray-100">
         {pageData.map(c=> (
           <tr key={c.id} className="table-row">
-            <td className="px-6 py-4">
+            <td className="px-3 md:px-6 py-4">
               <Link 
                 to={`/contracts/${c.id}`} 
-                className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors duration-200"
+                className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors duration-200 text-sm md:text-base"
               >
                 {c.name}
               </Link>
+              <div className="text-xs text-gray-500 sm:hidden mt-1">{c.parties}</div>
             </td>
-            <td className="px-6 py-4 text-gray-700">{c.parties}</td>
-            <td className="px-6 py-4 text-gray-600">{c.expiry}</td>
-            <td className="px-6 py-4">
+            <td className="px-3 md:px-6 py-4 text-gray-700 hidden sm:table-cell text-sm md:text-base">{c.parties}</td>
+            <td className="px-3 md:px-6 py-4 text-gray-600 text-sm md:text-base">{c.expiry}</td>
+            <td className="px-3 md:px-6 py-4">
               <span className={statusBadge(c.status)}>
                 {c.status}
               </span>
             </td>
-            <td className="px-6 py-4">
+            <td className="px-3 md:px-6 py-4 hidden md:table-cell">
               <span className={riskBadge(c.risk)}>
                 {c.risk}
               </span>

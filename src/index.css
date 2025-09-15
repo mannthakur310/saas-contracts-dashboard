@@ -16,6 +16,44 @@ html, body, #root {
   overflow-x: hidden;
 }
 
+/* Mobile-first responsive improvements */
+@media (max-width: 768px) {
+  .card {
+    margin: 0.5rem;
+  }
+  
+  .card-header, .card-body {
+    padding: 1rem;
+  }
+  
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .form-input {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Improve table scrolling on mobile */
+  .table-container {
+    border-radius: 0.5rem;
+  }
+  
+  /* Better spacing for mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-header, .card-body {
+    padding: 1.25rem;
+  }
+}
+
 .aside {
   position: relative;
   z-index: 10;
